@@ -1,15 +1,21 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import React, { useState } from "react";
+import "./App.scss";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Interactions from "./pages/Interactions";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Interactions />,
+  },
+]);
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-      <h1 className="text-3xl text-red-500 ">Hello world!</h1>
-    </>
+    <React.Fragment>
+      <RouterProvider router={router} />
+    </React.Fragment>
   );
 }
 
