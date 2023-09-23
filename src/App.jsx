@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import "./App.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Interactions from "./pages/Interactions";
+import Shuffle from "./pages/Shuffle";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Interactions />,
+  },
+  {
+    path: "/shuffle",
+    element: <Shuffle />,
   },
 ]);
 function App() {
