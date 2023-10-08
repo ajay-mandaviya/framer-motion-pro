@@ -3,6 +3,7 @@ import "./App.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Interactions from "./pages/Interactions";
 import Shuffle from "./pages/Shuffle";
+import RadialGradient from "./pages/RadialGradient";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/shuffle",
     element: <Shuffle />,
+  },
+  {
+    path: "/gradient",
+    element: <RadialGradient />,
   },
 ]);
 function App() {

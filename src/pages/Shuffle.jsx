@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { motion } from "framer-motion";
+import { motion, useTransform, useMotionValue } from "framer-motion";
 
 const data = [
   {
@@ -27,6 +27,11 @@ const data = [
 ];
 const Shuffle = () => {
   const [contact, setContact] = React.useState(data);
+
+  const x = useMotionValue(0);
+  const opacityRange = [0, 1, 1, 0];
+  const xRange = [-100, -100, 100, 200];
+  const opacity = useTransform(x, xRange, opacityRange);
 
   const onAdd = () => {
     setContact([
@@ -56,8 +61,25 @@ const Shuffle = () => {
     setContact([...shuffled]);
   };
 
+  function template({ rotate, x }) {
+    console.log("x", x);
+    return `rotate(${rotate}) translateX(${x})`;
+  }
   return (
     <div className="shuffle-page">
+      <motion.div
+      // transformTemplate={template}
+      // whileHover={{ scale: 1.2 }}
+      // whileTap={{ scale: 0.8 }}
+      // animate={{ rotate: 360 }}
+      // style={{ rotate: 0, x: "50px" }}
+      // style={{ x: 100 }}
+      >
+        <motion.circle
+          style={{ scale: 2, originX: "100px", originY: "100px" }}
+        />
+        <p>APplication</p>
+      </motion.div>
       <h1>Shuffle List</h1>
       <div>
         <button className="shuffle-button" onClick={onAdd}>
