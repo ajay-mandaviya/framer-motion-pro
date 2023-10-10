@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  AnimatePresence,
   MotionValue,
   motion,
   stagger,
@@ -68,7 +69,7 @@ const RadialGradient = () => {
     }
   }
   let [count, setCount] = useState(0);
-
+  const [open, setOpen] = useState(false);
   return (
     <>
       <div
@@ -143,9 +144,52 @@ const RadialGradient = () => {
             </div>
           </div>
         </div>
+
         <div className="flex w-1/2 items-end justify-center">
           <Counter value={count} />
         </div>
+      </div>
+      <div>
+        {/* dropdown animation */}
+        <motion.div>
+          <AnimatePresence>
+            {open && (
+              <motion.ul>
+                {[...Array(3).fill(1)].map((ele) => {
+                  return (
+                    <motion.li
+                      initial={{
+                        scale: 0.5,
+                        y: 60,
+                      }}
+                      exit={{
+                        y: 20,
+                        opacity: 0,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 50,
+                      }}
+                      animate={{
+                        y: 0,
+                        scale: 1,
+                      }}
+                      className="w-14 h-14 rounded-full"
+                    >
+                      <span>AJys</span>
+                    </motion.li>
+                  );
+                })}
+              </motion.ul>
+            )}
+          </AnimatePresence>
+        </motion.div>
+        <button
+          onClick={() => setOpen((prev) => !prev)}
+          className="w-12 h-12 bg-gray-300 rounded-full"
+        >
+          Round
+        </button>
       </div>
     </>
   );
