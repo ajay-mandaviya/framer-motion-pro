@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Interactions from "./pages/Interactions";
 import Shuffle from "./pages/Shuffle";
 import RadialGradient from "./pages/RadialGradient";
+import ListTable from "./pages/ListTable";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/gradient",
     element: <RadialGradient />,
+  },
+  {
+    path: "/table",
+    element: <ListTable />,
   },
 ]);
 function App() {
